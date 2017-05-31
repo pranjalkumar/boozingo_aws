@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2017 at 06:32 AM
+-- Generation Time: May 31, 2017 at 07:18 PM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -115,6 +115,13 @@ CREATE TABLE `cities` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`id`, `city_name`, `city_image`, `created_at`, `updated_at`) VALUES
+(3, 'delhi', 'cities/May2017/UoEaaiCau6uCFBLYr22T.jpg', '2017-05-21 06:15:38', '2017-05-21 06:15:38');
 
 -- --------------------------------------------------------
 
@@ -312,7 +319,22 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (237, 28, 'model_shop_details', 'text_area', 'Model Shop Details', 1, 1, 1, 1, 1, 1, NULL, 6),
 (238, 28, 'model_shop_cost', 'number', 'Model Shop Cost', 1, 1, 1, 1, 1, 1, NULL, 7),
 (239, 28, 'model_shop_geolocation', 'text', 'Model Shop Geolocation', 0, 1, 1, 1, 1, 1, NULL, 8),
-(241, 33, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1);
+(241, 33, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(242, 34, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(244, 34, 'night_club_name', 'text', 'Night Club Name', 1, 1, 1, 1, 1, 1, NULL, 3),
+(245, 34, 'night_club_address', 'text', 'Night Club Address', 1, 1, 1, 1, 1, 1, NULL, 4),
+(246, 34, 'night_club_attractions', 'text_area', 'Night Club Attractions', 1, 1, 1, 1, 1, 1, NULL, 5),
+(247, 34, 'night_club_details', 'text_area', 'Night Club Details', 1, 1, 1, 1, 1, 1, NULL, 6),
+(248, 34, 'night_club_cost', 'number', 'Night Club Cost', 1, 1, 1, 1, 1, 1, NULL, 7),
+(249, 34, 'night_club_geolocation', 'text', 'Night Club Geolocation', 0, 1, 1, 1, 1, 1, NULL, 8),
+(250, 34, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 9),
+(251, 34, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 10),
+(252, 35, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
+(253, 35, 'night_club_id', 'select_dropdown', 'Night Club Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"night_club_address","page_slug":"admin/night-clubs"}}', 2),
+(254, 35, 'night_club_images', 'multiple_images', 'Night Club Images', 1, 1, 1, 1, 1, 1, '{"quality":"80%"}', 3),
+(255, 35, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 4),
+(256, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 5),
+(257, 34, 'locality_id', 'select_dropdown', 'Locality Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"locality_name","page_slug":"admin/localities"}}', 2);
 
 -- --------------------------------------------------------
 
@@ -363,7 +385,9 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (30, 'model_shop_images', 'model-shop-images', 'Model Shop Image', 'Model Shop Images', NULL, 'App\\ModelShopImage', NULL, NULL, 1, 0, '2017-05-19 09:36:22', '2017-05-19 09:36:22'),
 (31, 'beer_shops_images', 'beer-shops-images', 'Beer Shops Image', 'Beer Shops Images', NULL, 'App\\BeerShopsImage', NULL, NULL, 1, 0, '2017-05-19 09:38:08', '2017-05-19 09:38:08'),
 (32, 'liquor_shop_images', 'liquor-shop-images', 'Liquor Shop Image', 'Liquor Shop Images', NULL, 'App\\LiquorShopImage', NULL, NULL, 1, 0, '2017-05-19 09:44:18', '2017-05-19 09:44:18'),
-(33, 'liquor_shops', 'liquor-shops', 'Liquor Shop', 'Liquor Shops', NULL, 'App\\LiquorShop', NULL, NULL, 1, 0, '2017-05-19 09:46:15', '2017-05-19 09:46:15');
+(33, 'liquor_shops', 'liquor-shops', 'Liquor Shop', 'Liquor Shops', NULL, 'App\\LiquorShop', NULL, NULL, 1, 0, '2017-05-19 09:46:15', '2017-05-19 09:46:15'),
+(34, 'night_clubs', 'night-clubs', 'Night Club', 'Night Clubs', NULL, 'App\\NightClub', NULL, NULL, 1, 0, '2017-05-31 13:22:42', '2017-05-31 13:22:42'),
+(35, 'night_club_images', 'night-club-images', 'Night Club Image', 'Night Club Images', NULL, 'App\\NightClubImage', NULL, NULL, 1, 0, '2017-05-31 13:30:03', '2017-05-31 13:30:03');
 
 -- --------------------------------------------------------
 
@@ -459,6 +483,16 @@ CREATE TABLE `main_images` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `main_images`
+--
+
+INSERT INTO `main_images` (`id`, `purpose`, `image_url`, `created_at`, `updated_at`) VALUES
+(3, 'main_banner', 'main-images/May2017/YaCjc2LqC4m5fRMaFneN.jpeg', '2017-05-21 06:02:24', '2017-05-21 06:02:24'),
+(4, 'offer', 'main-images/May2017/UvrK5gSpJ3qGq2L8AyXV.jpg', '2017-05-21 06:03:59', '2017-05-21 06:03:59'),
+(5, 'ads', 'main-images/May2017/LOFngUVezncmULc3jEwT.jpg', '2017-05-21 06:04:24', '2017-05-21 06:04:24'),
+(6, 'offer', 'main-images/May2017/fOPCy3zVhIj6S5Qd4A73.jpeg', '2017-05-28 10:11:13', '2017-05-28 10:11:13');
+
 -- --------------------------------------------------------
 
 --
@@ -507,16 +541,16 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '/admin', '_self', 'voyager-boat', NULL, NULL, 1, '2017-05-17 22:11:48', '2017-05-17 22:11:48', NULL, NULL),
-(2, 1, 'Media', '/admin/media', '_self', 'voyager-images', NULL, NULL, 19, '2017-05-17 22:11:48', '2017-05-19 09:52:27', NULL, NULL),
-(3, 1, 'Posts', '/admin/posts', '_self', 'voyager-news', NULL, NULL, 20, '2017-05-17 22:11:48', '2017-05-19 09:52:27', NULL, NULL),
+(2, 1, 'Media', '/admin/media', '_self', 'voyager-images', NULL, NULL, 21, '2017-05-17 22:11:48', '2017-05-31 13:31:56', NULL, NULL),
+(3, 1, 'Posts', '/admin/posts', '_self', 'voyager-news', NULL, NULL, 22, '2017-05-17 22:11:48', '2017-05-31 13:31:52', NULL, NULL),
 (4, 1, 'Users', '/admin/users', '_self', 'voyager-person', NULL, NULL, 2, '2017-05-17 22:11:48', '2017-05-18 08:46:12', NULL, NULL),
-(5, 1, 'Categories', '/admin/categories', '_self', 'voyager-categories', NULL, NULL, 22, '2017-05-17 22:11:48', '2017-05-19 09:52:27', NULL, NULL),
-(6, 1, 'Pages', '/admin/pages', '_self', 'voyager-file-text', NULL, NULL, 21, '2017-05-17 22:11:48', '2017-05-19 09:52:27', NULL, NULL),
+(5, 1, 'Categories', '/admin/categories', '_self', 'voyager-categories', NULL, NULL, 24, '2017-05-17 22:11:48', '2017-05-31 13:31:52', NULL, NULL),
+(6, 1, 'Pages', '/admin/pages', '_self', 'voyager-file-text', NULL, NULL, 23, '2017-05-17 22:11:48', '2017-05-31 13:31:52', NULL, NULL),
 (7, 1, 'Roles', '/admin/roles', '_self', 'voyager-lock', NULL, NULL, 3, '2017-05-17 22:11:48', '2017-05-18 08:46:12', NULL, NULL),
-(8, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 23, '2017-05-17 22:11:49', '2017-05-19 09:52:27', NULL, NULL),
+(8, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 25, '2017-05-17 22:11:49', '2017-05-31 13:31:52', NULL, NULL),
 (9, 1, 'Menu Builder', '/admin/menus', '_self', 'voyager-list', NULL, 8, 1, '2017-05-17 22:11:49', '2017-05-18 04:07:31', NULL, NULL),
 (10, 1, 'Database', '/admin/database', '_self', 'voyager-data', NULL, 8, 2, '2017-05-17 22:11:49', '2017-05-18 04:07:31', NULL, NULL),
-(11, 1, 'Settings', '/admin/settings', '_self', 'voyager-settings', NULL, NULL, 24, '2017-05-17 22:11:49', '2017-05-19 09:52:27', NULL, NULL),
+(11, 1, 'Settings', '/admin/settings', '_self', 'voyager-settings', NULL, NULL, 26, '2017-05-17 22:11:49', '2017-05-31 13:31:52', NULL, NULL),
 (18, 1, 'main-images', '/admin/main-images', '_self', NULL, '#000000', NULL, 4, '2017-05-18 09:36:07', '2017-05-18 10:05:06', NULL, ''),
 (19, 1, 'cities', '/admin/cities', '_self', NULL, '#000000', NULL, 5, '2017-05-18 09:42:45', '2017-05-18 10:05:13', NULL, ''),
 (20, 1, 'localities', '/admin/localities', '_self', NULL, '#000000', NULL, 6, '2017-05-18 09:54:17', '2017-05-18 10:05:21', NULL, ''),
@@ -531,7 +565,9 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (29, 1, 'model shop images', '/admin/model-shop-images', '_self', NULL, '#000000', NULL, 16, '2017-05-19 09:37:04', '2017-05-19 09:52:10', NULL, ''),
 (30, 1, 'beer shops images', '/admin/beer-shops-images', '_self', NULL, '#000000', NULL, 14, '2017-05-19 09:38:48', '2017-05-19 09:51:58', NULL, ''),
 (31, 1, 'liquor shop images', '/admin/liquor-shop-images', '_self', NULL, '#000000', NULL, 18, '2017-05-19 09:45:06', '2017-05-19 09:52:27', NULL, ''),
-(32, 1, 'liquor shops', '/admin/liquor-shops', '_self', NULL, '#000000', NULL, 17, '2017-05-19 09:46:54', '2017-05-19 09:52:27', NULL, '');
+(32, 1, 'liquor shops', '/admin/liquor-shops', '_self', NULL, '#000000', NULL, 17, '2017-05-19 09:46:54', '2017-05-19 09:52:27', NULL, ''),
+(33, 1, 'night-clubs', 'admin/night-clubs', '_self', NULL, '#000000', NULL, 19, '2017-05-31 13:23:26', '2017-05-31 13:31:46', NULL, ''),
+(34, 1, 'night-club-images', 'admin/night-club-images', '_self', NULL, '#000000', NULL, 20, '2017-05-31 13:31:31', '2017-05-31 13:31:56', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -600,6 +636,39 @@ CREATE TABLE `model_shop_images` (
   `id` int(10) UNSIGNED NOT NULL,
   `model_shop_id` int(10) UNSIGNED NOT NULL,
   `model_shop_images` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `night_clubs`
+--
+
+CREATE TABLE `night_clubs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `locality_id` int(10) UNSIGNED NOT NULL,
+  `night_club_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `night_club_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `night_club_attractions` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `night_club_details` text COLLATE utf8_unicode_ci NOT NULL,
+  `night_club_cost` int(11) NOT NULL,
+  `night_club_geolocation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `night_club_images`
+--
+
+CREATE TABLE `night_club_images` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `night_club_id` int(10) UNSIGNED NOT NULL,
+  `night_club_images` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -775,7 +844,17 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (161, 'read_liquor_shops', 'liquor_shops', '2017-05-19 09:46:15', '2017-05-19 09:46:15', NULL),
 (162, 'edit_liquor_shops', 'liquor_shops', '2017-05-19 09:46:15', '2017-05-19 09:46:15', NULL),
 (163, 'add_liquor_shops', 'liquor_shops', '2017-05-19 09:46:15', '2017-05-19 09:46:15', NULL),
-(164, 'delete_liquor_shops', 'liquor_shops', '2017-05-19 09:46:15', '2017-05-19 09:46:15', NULL);
+(164, 'delete_liquor_shops', 'liquor_shops', '2017-05-19 09:46:15', '2017-05-19 09:46:15', NULL),
+(165, 'browse_night_clubs', 'night_clubs', '2017-05-31 13:22:42', '2017-05-31 13:22:42', NULL),
+(166, 'read_night_clubs', 'night_clubs', '2017-05-31 13:22:42', '2017-05-31 13:22:42', NULL),
+(167, 'edit_night_clubs', 'night_clubs', '2017-05-31 13:22:42', '2017-05-31 13:22:42', NULL),
+(168, 'add_night_clubs', 'night_clubs', '2017-05-31 13:22:42', '2017-05-31 13:22:42', NULL),
+(169, 'delete_night_clubs', 'night_clubs', '2017-05-31 13:22:42', '2017-05-31 13:22:42', NULL),
+(170, 'browse_night_club_images', 'night_club_images', '2017-05-31 13:30:03', '2017-05-31 13:30:03', NULL),
+(171, 'read_night_club_images', 'night_club_images', '2017-05-31 13:30:03', '2017-05-31 13:30:03', NULL),
+(172, 'edit_night_club_images', 'night_club_images', '2017-05-31 13:30:03', '2017-05-31 13:30:03', NULL),
+(173, 'add_night_club_images', 'night_club_images', '2017-05-31 13:30:03', '2017-05-31 13:30:03', NULL),
+(174, 'delete_night_club_images', 'night_club_images', '2017-05-31 13:30:03', '2017-05-31 13:30:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -922,7 +1001,17 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (161, 1),
 (162, 1),
 (163, 1),
-(164, 1);
+(164, 1),
+(165, 1),
+(166, 1),
+(167, 1),
+(168, 1),
+(169, 1),
+(170, 1),
+(171, 1),
+(172, 1),
+(173, 1),
+(174, 1);
 
 -- --------------------------------------------------------
 
@@ -1106,7 +1195,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 1, 'boozingo', 'superuser@gmail.com', 'users/default.png', '$2y$10$yYRcwHHgkUm5IOe9r8rP9OlLcdtJAQaSuFJ.j/BKWF.iuQu4aABpS', 'GUH22HAx8virQZxEpeGNODOMcUc3l03fMl7TNe3e61BSEX32P80ToNQHVAGl', '2017-05-17 22:11:52', '2017-05-18 01:50:13'),
+(1, 1, 'boozingo', 'superuser@gmail.com', 'users/default.png', '$2y$10$yYRcwHHgkUm5IOe9r8rP9OlLcdtJAQaSuFJ.j/BKWF.iuQu4aABpS', 'uYzQUiyuWCZg1tcBe7UTEFsQ2Aq9IxVWbZCCojGzL0sgJuR3akFtUcvBnIcr', '2017-05-17 22:11:52', '2017-05-18 01:50:13'),
 (2, 1, 'pradeep pandey', 'pradeep@gmail.com', 'users/default.png', '$2y$10$qJ87GMA4MATn6.aHFrrs5OfMMDU1PNMasrNY2dX6kJkL3HLH.QhNG', NULL, '2017-05-18 01:53:18', '2017-05-18 01:53:18');
 
 --
@@ -1250,6 +1339,20 @@ ALTER TABLE `model_shop_images`
   ADD KEY `model_shop_id` (`model_shop_id`);
 
 --
+-- Indexes for table `night_clubs`
+--
+ALTER TABLE `night_clubs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `night_clubs_location_id_index` (`locality_id`);
+
+--
+-- Indexes for table `night_club_images`
+--
+ALTER TABLE `night_club_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `night_club_images_night_club_id_index` (`night_club_id`);
+
+--
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -1342,22 +1445,22 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bars`
 --
 ALTER TABLE `bars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `bar_images`
 --
 ALTER TABLE `bar_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `beer_shops`
 --
 ALTER TABLE `beer_shops`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `beer_shops_images`
 --
 ALTER TABLE `beer_shops_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `categories`
 --
@@ -1367,47 +1470,47 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `liquor_shops`
 --
 ALTER TABLE `liquor_shops`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `liquor_shop_images`
 --
 ALTER TABLE `liquor_shop_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `localities`
 --
 ALTER TABLE `localities`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lounges`
 --
 ALTER TABLE `lounges`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lounge_images`
 --
 ALTER TABLE `lounge_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `main_images`
 --
 ALTER TABLE `main_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `menus`
 --
@@ -1417,7 +1520,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -1427,12 +1530,22 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `model_shops`
 --
 ALTER TABLE `model_shops`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `model_shop_images`
 --
 ALTER TABLE `model_shop_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `night_clubs`
+--
+ALTER TABLE `night_clubs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `night_club_images`
+--
+ALTER TABLE `night_club_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pages`
 --
@@ -1442,7 +1555,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 --
 -- AUTO_INCREMENT for table `permission_groups`
 --
@@ -1457,12 +1570,12 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `pubs`
 --
 ALTER TABLE `pubs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pub_images`
 --
 ALTER TABLE `pub_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `roles`
 --
