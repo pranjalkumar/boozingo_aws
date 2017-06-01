@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/',[
-    'uses' => 'IndexController@ShowMainPage'
-]);
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/',[
+    'uses' => 'IndexController@ShowMainPage'
+]);
+Route::get('/search/{city}',['uses' => 'IndexController@citySearch']);
+Route::get('/{city}',[
+    'uses' => 'cityController@showCityDetail'
+]);
+
+

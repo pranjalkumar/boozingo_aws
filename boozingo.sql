@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2017 at 07:29 PM
+-- Generation Time: Jun 01, 2017 at 08:06 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -29,14 +29,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `bars` (
   `id` int(10) UNSIGNED NOT NULL,
   `bar_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `bar_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `bar_attractions` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `bar_details` text COLLATE utf8_unicode_ci NOT NULL,
+  `bar_details` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `bar_cost` int(11) NOT NULL,
-  `bar_geolocation` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bar_geolocation` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `locality_id` int(10) UNSIGNED NOT NULL
+  `locality_id` int(10) UNSIGNED NOT NULL,
+  `bar_time` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N/A',
+  `bar_contact` int(11) NOT NULL DEFAULT '0',
+  `bar_working_day` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N/A',
+  `bar_booze_served` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N/A',
+  `bar_food` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'N/A',
+  `bar_sitting_facility` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `bar_music` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `bar_payment` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `bar_ac` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -231,10 +238,9 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (123, 21, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 5),
 (125, 22, 'bar_name', 'text', 'Bar Name', 1, 1, 1, 1, 1, 1, NULL, 3),
 (126, 22, 'bar_address', 'text', 'Bar Address', 1, 1, 1, 1, 1, 1, NULL, 4),
-(127, 22, 'bar_attractions', 'text_area', 'Bar Attractions', 1, 1, 1, 1, 1, 1, NULL, 5),
-(128, 22, 'bar_details', 'text_area', 'Bar Details', 1, 1, 1, 1, 1, 1, NULL, 6),
-(129, 22, 'bar_cost', 'number', 'Bar Cost', 1, 1, 1, 1, 1, 1, NULL, 7),
-(130, 22, 'bar_geolocation', 'text', 'Bar Geolocation', 0, 1, 1, 1, 1, 1, NULL, 8),
+(128, 22, 'bar_details', 'text_area', 'Bar Details', 1, 1, 1, 1, 1, 1, NULL, 5),
+(129, 22, 'bar_cost', 'number', 'Bar Cost', 1, 1, 1, 1, 1, 1, NULL, 6),
+(130, 22, 'bar_geolocation', 'text', 'Bar Geolocation', 0, 1, 1, 1, 1, 1, NULL, 7),
 (131, 23, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (132, 23, 'bar_id', 'select_dropdown', 'Bar Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"bar_address","page_slug":"admin/bars"}}', 2),
 (133, 23, 'bar_images', 'multiple_images', 'Bar Images', 1, 1, 1, 1, 1, 1, '{"quality":"80%"}', 3),
@@ -300,8 +306,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (211, 33, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 10),
 (212, 21, 'id', 'checkbox', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (213, 22, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
-(214, 22, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 9),
-(215, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 10),
+(214, 22, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 8),
+(215, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 9),
 (216, 22, 'locality_id', 'select_dropdown', 'Locality Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"locality_name","page_slug":"admin/localities"}}', 2),
 (217, 24, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
 (218, 26, 'id', 'number', 'Id', 1, 0, 0, 0, 0, 0, NULL, 1),
@@ -334,7 +340,15 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (254, 35, 'night_club_images', 'multiple_images', 'Night Club Images', 1, 1, 1, 1, 1, 1, '{"quality":"80%"}', 3),
 (255, 35, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 4),
 (256, 35, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 5),
-(257, 34, 'locality_id', 'select_dropdown', 'Locality Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"locality_name","page_slug":"admin/localities"}}', 2);
+(257, 34, 'locality_id', 'select_dropdown', 'Locality Id', 1, 1, 1, 1, 1, 1, '{"relationship":{"key":"id","label":"locality_name","page_slug":"admin/localities"}}', 2),
+(258, 22, 'bar_time', 'text', 'Bar Time', 1, 1, 1, 1, 1, 1, NULL, 10),
+(259, 22, 'bar_contact', 'number', 'Bar Contact', 1, 1, 1, 1, 1, 1, NULL, 11),
+(261, 22, 'bar_booze_served', 'text', 'Bar Booze Served', 1, 1, 1, 1, 1, 1, NULL, 13),
+(262, 22, 'bar_food', 'radio_btn', 'Bar Food', 1, 1, 1, 1, 1, 1, '{"default":"n/a","options":{"veg":"Veg","nonveg":"Non Veg","both":"Both","n/a":"N/A"}}', 14),
+(263, 22, 'bar_sitting_facility', 'radio_btn', 'Bar Sitting Facility', 1, 1, 1, 1, 1, 1, '{"default":"yes","options":{"yes":"Yes","no":"No"}}', 15),
+(264, 22, 'bar_music', 'radio_btn', 'Bar Music', 1, 1, 1, 1, 1, 1, '{"default":"available","options":{"available":"Available","n/a":"N/A"}}', 16),
+(265, 22, 'bar_payment', 'radio_btn', 'Bar Payment', 1, 1, 1, 1, 1, 1, '{"default":"cash","options":{"cash":"cash","credit/debit card":"credit/debit card","all":"Both"}}', 17),
+(266, 22, 'bar_working_day', 'checkbox', 'Bar Working Day', 1, 1, 1, 1, 1, 1, NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -1475,7 +1489,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=267;
 --
 -- AUTO_INCREMENT for table `data_types`
 --
