@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bar extends Model
 {
 
-        public function localityId(){
-            return $this->belongsTo(Locality::class);
+        public function CityId(){
+            return $this->belongsTo(City::class);
         }
 }
