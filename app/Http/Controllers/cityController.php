@@ -25,7 +25,7 @@ class cityController extends Controller
 
                 $liquor_shops_list=DB::table('liquor_shops')->where('city_id','=',$city_id)->join('liquor_shop_images','liquor_shops.id','=','liquor_shop_images.liquor_shop_id')->
                 select('liquor_shop_name','liquor_shop_address','liquor_shop_details','liquor_shop_cost','liquor_shop_time','liquor_shop_contact','liquor_shop_images')->get();
-                
+
 //                $lounges_list=DB::table('lounges')->where('city_id','=',$city_id)->get();
 //                $model_shops_list=DB::table('model_shops')->where('city_id','=',$city_id)->get();
 //                $night_clubs_list=DB::table('night_clubs')->where('city_id','=',$city_id)->get();
