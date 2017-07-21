@@ -19,7 +19,7 @@ class IndexController extends Controller
     }
     public function citySearch($city)
     {
-        $search_result=DB::table('cities')->select('city_name')->where('city_name','like','%'.$city.'%')->get()->toJson();
+        $search_result=DB::table('cities')->select('city_name')->where('city_name','like',$city.'%')->get()->toJson();
         return $search_result;
 
     }
