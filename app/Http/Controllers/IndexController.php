@@ -18,8 +18,10 @@ class IndexController extends Controller
         return $data;
     }
     public function citySearch($city)
-    {
-        $search_result=DB::table('cities')->select('city_name')->where('city_name','like',$city.'%')->get()->toJson();
+    {   if(strlen($city))
+            {$search_result=DB::table('cities')->select('city_name')->get()->toJson();}
+        else
+        {$search_result=DB::table('cities')->select('city_name')->where('city_name','like',$city.'%')->get()->toJson();}
         return $search_result;
 
     }
