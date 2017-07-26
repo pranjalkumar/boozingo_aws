@@ -19,6 +19,7 @@ Route::get('/',[
     'uses' => 'IndexController@ShowMainPage'
 ]);
 Route::get('/search/{city}',['uses' => 'IndexController@citySearch']);
+Route::get('/search',['uses' => 'IndexController@allCity']);
 Route::get('/{city}',[
     'uses' => 'cityController@showCityDetail'
 ]);
