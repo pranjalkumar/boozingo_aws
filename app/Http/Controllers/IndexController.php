@@ -23,9 +23,9 @@ class IndexController extends Controller
 
     }
     public function allCity(){
-        $allCity=DB::table('cities')->select('city_name')->get()->toArray();
-        $result=json_encode(array('city'=>$allCity));
-        return $result;
+        $allCity=DB::table('cities')->select('city_name')->get()->toJson();
+
+        return $allCity;
     }
 
 }
