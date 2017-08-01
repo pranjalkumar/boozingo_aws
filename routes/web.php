@@ -23,5 +23,5 @@ Route::get('/search',['uses' => 'IndexController@allCity']);
 Route::get('/{city}',[
     'uses' => 'cityController@showCityDetail'
 ]);
-
+Route::get('/{type}/{type_id}',['uses' => 'detailedInformationController@detail']);
 
