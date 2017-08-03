@@ -92,7 +92,7 @@ class detailedInformationController extends Controller
             {
                 return "Sorry!! There is no result to display";
             }
-            
+
             return $result;
 
     }
