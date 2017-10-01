@@ -21,16 +21,16 @@ class cityController extends Controller
                 'bar_address','bar_cost','bar_time','bar_not_working_day','bar_contact','bar_images')->get()->toArray();
 
             $beer_shops_list= DB::table('beer_shops')->where('city_id','=',$city_id)->join('beer_shops_images','beer_shops.id','=','beer_shops_images.beer_shop_id')->
-            select('beer_shops.id','beer_shop_name','beer_shop_address','beer_shop_not_working_day','beer_shop_cost','beer_shop_time','beer_shop_contact','beer_shop_images')->get()->toArray();
+            select('beer_shops.id','beer_shop_name','beer_shop_address','beer_shop_not_working_day','beer_shop_time','beer_shop_contact','beer_shop_images')->get()->toArray();
 
             $liquor_shops_list=DB::table('liquor_shops')->where('city_id','=',$city_id)->join('liquor_shop_images','liquor_shops.id','=','liquor_shop_images.liquor_shop_id')->
-            select('liquor_shops.id','liquor_shop_name','liquor_shop_address','liquor_shop_not_working_day','liquor_shop_cost','liquor_shop_time','liquor_shop_contact','liquor_shop_images')->get()->toArray();
+            select('liquor_shops.id','liquor_shop_name','liquor_shop_address','liquor_shop_not_working_day','liquor_shop_time','liquor_shop_contact','liquor_shop_images')->get()->toArray();
 
             $lounges_list=DB::table('lounges')->where('city_id','=',$city_id)->join('lounge_images','lounges.id','=','lounge_images.lounge_id')->select('lounges.id','lounge_name','lounge_address',
                 'lounge_cost','lounge_not_working_day','lounge_time','lounge_contact','lounge_images')->get()->toArray();
 
             $model_shop_list=DB::table('model_shops')->where('city_id','=',$city_id)->join('model_shop_images','model_shops.id','=','model_shop_images.model_shop_id')->select('model_shops.id','model_shop_name',
-                'model_shop_address','model_shop_not_working_day','model_shop_cost','model_shop_time','model_shop_contact','model_shop_images')->get()->toArray();
+                'model_shop_address','model_shop_not_working_day','model_shop_time','model_shop_contact','model_shop_images')->get()->toArray();
 
             $night_clubs_list=DB::table('night_clubs')->where('city_id','=',$city_id)->join('night_club_images','night_clubs.id','=','night_club_images.night_club_id')->select('night_clubs.id','night_club_name',
                 'night_club_address','night_club_not_working_day','night_club_cost','night_club_time','night_club_contact','night_club_images')->get()->toArray();

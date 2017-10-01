@@ -24,7 +24,7 @@ class detailedInformationController extends Controller
             }
             elseif ($type=='beer_shop')
             {
-                $data=DB::table('beer_shops')->where('id','=',$type_id)->select('beer_shop_name','beer_shop_address','beer_shop_details','beer_shop_cost','beer_shop_geolocation','beer_shop_time',
+                $data=DB::table('beer_shops')->where('id','=',$type_id)->select('beer_shop_name','beer_shop_address','beer_shop_details','beer_shop_geolocation','beer_shop_time',
                     'beer_shop_contact','beer_shop_not_working_day','beer_shop_booze_served','beer_shop_payment')->get()->toArray();
                 $data_images=DB::table('beer_shops_images')->where('beer_shop_id','=',$type_id)->select('beer_shop_images')->get()->toArray();
                 $result=json_encode(array('beer_shop_detail'=>$data,'beer_shop_images'=>$data_images));
@@ -35,7 +35,7 @@ class detailedInformationController extends Controller
             }
             elseif ($type=='liquor_shop')
             {
-                $data=DB::table('liquor_shops')->where('id','=',$type_id)->select('liquor_shop_name','liquor_shop_address','liquor_shop_details','liquor_shop_cost','liquor_shop_geolocation',
+                $data=DB::table('liquor_shops')->where('id','=',$type_id)->select('liquor_shop_name','liquor_shop_address','liquor_shop_details','liquor_shop_geolocation',
                     'liquor_shop_time','liquor_shop_contact','liquor_shop_not_working_day','liquor_shop_booze_served','liquor_shop_payment')->get()->toArray();
                 $data_images=DB::table('liquor_shop_images')->where('liquor_shop_id','=',$type_id)->select('liquor_shop_images')->get()->toArray();
                 $result=json_encode(array('liquor_shop_detail'=>$data_images,'liquor_shop_images'=>$data_images));
@@ -57,7 +57,7 @@ class detailedInformationController extends Controller
             }
             elseif ($type=='model_shop')
             {
-                $data=DB::table('model_shops')->where('id','=',$type_id)->select('model_shop_name','model_shop_address','model_shop_details','model_shop_cost','model_shop_geolocation',
+                $data=DB::table('model_shops')->where('id','=',$type_id)->select('model_shop_name','model_shop_address','model_shop_details','model_shop_geolocation',
                     'model_shop_time','model_shop_contact','model_shop_not_working_day','model_shop_booze_served','model_shop_payment')->get()->toArray();
                 $data_images=DB::table('model_shop_images')->where('model_shop_id','=',$type_id)->select('model_shop_images')->get()->toArray();
                 $result=json_encode(array('model_shop_detail'=>$data,'model_shop_images'=>$data_images));
