@@ -16,7 +16,7 @@ class detailedInformationController extends Controller
                     'bar_address','bar_details','bar_cost','bar_geolocation','bar_time','bar_not_working_day','bar_contact','bar_booze_served','bar_food','bar_sitting_facility',
                     'bar_music','bar_payment','bar_ac')->get()->toArray();
                 $data_images=DB::table('bar_images')->where('bar_id','=',$type_id)->select('bar_images')->get()->toArray();
-                $result=json_encode(array('bars'=>$data,'bar_images'=>$data_images));
+                $result=json_encode(array('bar'=>$data,'bar_images'=>$data_images));
                 if(count($data)==0)
                 {
                     return 'Sorry!! There is no result to display';
