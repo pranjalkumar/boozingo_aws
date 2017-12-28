@@ -30,7 +30,7 @@ class cityController extends Controller
                 'lounge_cost','lounge_not_working_day','lounge_time','lounge_contact','lounge_icon')->get()->toArray();
 
             $model_shop_list=DB::table('model_shops')->where('city_id','=',$city_id)->join('model_shop_images','model_shops.id','=','model_shop_images.model_shop_id')->select('model_shops.id','model_shop_name',
-                'model_shop_address','model_shop_not_working_day','model_shop_time','model_shop_contact','model_shop_icon')->get()->toArray();
+                'model_shop_address','model_shop_not_working_day','model_shop_time','model_shop_contact')->get()->toArray();
 
             $night_clubs_list=DB::table('night_clubs')->where('city_id','=',$city_id)->join('night_club_images','night_clubs.id','=','night_club_images.night_club_id')->select('night_clubs.id','night_club_name',
                 'night_club_address','night_club_not_working_day','night_club_cost','night_club_time','night_club_contact','night_club_icon')->get()->toArray();
