@@ -13,7 +13,7 @@ class IndexController extends Controller
     public function showMainPage()
     {
         $main_page_images=DB::table('main_images')->select('purpose','image_url')->get()->toArray();
-        $cities=DB::table('cities')->select('city_name','city_image')->take(6)->get()->toArray();
+        $cities=DB::table('cities')->select('city_name','city_icon')->whereIn('id',['5,12,15,13,14,10'])->get()->toArray();
         $data=json_encode(array('images'=>$main_page_images,'cities'=>$cities));
         return $data;
     }
